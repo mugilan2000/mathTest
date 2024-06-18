@@ -1,0 +1,9 @@
+.form-row{
+    display: flex;
+}
+.form-row div{
+    padding: 10px;
+}
+.form-group div{
+    padding: 10px;
+}
