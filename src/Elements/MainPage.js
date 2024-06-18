@@ -27,6 +27,9 @@ const MainPage = ({ API_URL }) => {
         const response = await axios({
             method: 'post',
             url: API_URL,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+              },
             data: JSON.stringify(formData)
         });
 
