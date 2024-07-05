@@ -50,7 +50,8 @@ const MainPage = ({ API_URL }) => {
         }
         fetch(API_URL, {
             method: 'post',
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            referrerPolicy: "unsafe-url"
         }).then((response) => response.json())
         .then((data) => setData(data))
     }, [])
