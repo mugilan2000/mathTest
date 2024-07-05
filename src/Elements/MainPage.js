@@ -27,9 +27,7 @@ const MainPage = ({ API_URL }) => {
         const response = await axios({
             method: 'post',
             url: API_URL,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-              },
+            
             data: JSON.stringify(formData)
         });
 
@@ -46,8 +44,20 @@ const MainPage = ({ API_URL }) => {
     }
 
     useEffect(() => {
-        fetchData();
+        const formData = {
+
+            operation: 'getAllQuestions'
+        }
+        fetch(API_URL, {
+            method: 'post',
+            body: JSON.stringify(formData)
+        }).then((response) => response.json())
+        .then((data) => setData(data))
     }, [])
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, [])
 
 
     const getStatus = (number) => {
