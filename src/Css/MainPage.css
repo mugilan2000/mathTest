@@ -59,6 +59,18 @@ li{
     color: green;
 }
 
+.heading1{
+    padding: 10px;
+}
+
+.heading2{
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    display: flex;
+    padding: 5px;
+}
+
 @media screen and (max-width: 700px){
 
     /* button{

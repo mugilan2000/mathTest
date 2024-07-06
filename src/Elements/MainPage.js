@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Css/MainPage.css'
+import { Footer } from './Footer'
 
 const MainPage = ({ API_URL }) => {
 
@@ -148,7 +149,8 @@ const MainPage = ({ API_URL }) => {
     return (
         <>
             <div>
-                <h5>10th Maths Daily Questions</h5>
+                <h5 className='heading1'>10th Maths Test</h5>
+                <h4 className='heading2'>Hi Haritha, Solve below maths questions on daily basis</h4>
                 {data.map((dt) => (
                     <div>
                         <br></br>
@@ -174,6 +176,8 @@ const MainPage = ({ API_URL }) => {
                         </div>
                     </div>
                 ))}
+
+                <Footer />
 
             </div>
         </>
