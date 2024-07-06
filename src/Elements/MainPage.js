@@ -137,6 +137,11 @@ const MainPage = ({ API_URL }) => {
         // const res = response.data;
 
         fetchData();
+        fetchData();
+        fetchData();
+
+        fetchData();
+        fetchData();
 
 
     }
