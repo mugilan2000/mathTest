@@ -14,22 +14,29 @@ const EditPage = ({ API_URL }) => {
             operation: 'getAllQuestions'
         }
 
-        const response = await axios({
+        // const response = await axios({
+        //     method: 'post',
+        //     url: API_URL,
+        //     data: JSON.stringify(formData)
+        // });
+
+        fetch(API_URL, {
             method: 'post',
-            url: API_URL,
-            data: JSON.stringify(formData)
-        });
+            body: JSON.stringify(formData),
+            referrerPolicy: "unsafe-url"
+        }).then((response) => response.json())
+        .then((data) => setData(data))
 
-        const res = response.data;
+        // const res = response.data;
 
-        if (res[0].result === "No Data Found") {
-            setError(res[0].result);
-        }
-        else {
-            setData(res)
-            console.log(res)
+        // if (res[0].result === "No Data Found") {
+        //     setError(res[0].result);
+        // }
+        // else {
+        //     setData(res)
+        //     console.log(res)
 
-        }
+        // }
     }
 
     useEffect(() => {

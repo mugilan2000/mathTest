@@ -21,20 +21,30 @@ const EditInputs = ({ API_URL }) => {
             }
 
             try {
-                const response = await axios({
+                // const response = await axios({
+                //     method: 'post',
+                //     url: API_URL,
+                //     data: JSON.stringify(formData)
+                // })
+
+                const res = fetch(API_URL, {
                     method: 'post',
-                    url: API_URL,
-                    data: JSON.stringify(formData)
-                })
+                    body: JSON.stringify(formData),
+                    referrerPolicy: "unsafe-url"
+                }).then((response) => response.json()).then((data) => {
 
-                const res = response.data;
+                
 
-                setChapterNo(res[0].chapter_no)
-                setIsSolved(res[0].isSolved)
-                setObtainedMark(res[0].obtained_mark)
-                setQuestion(res[0].question_description)
-                setStatus(res[0].status)
-                setTotalMark(res[0].total_marks)
+                
+
+                setChapterNo(data[0].chapter_no);
+                setIsSolved(data[0].isSolved);
+                setObtainedMark(data[0].obtained_mark);
+                setQuestion(data[0].question_description);
+                setStatus(data[0].status);
+                setTotalMark(data[0].total_marks);
+
+            })
 
             }
             catch (e) {
@@ -116,13 +126,19 @@ const EditInputs = ({ API_URL }) => {
                 operation: 'changeMark'
             }
 
-            const response1 = await axios({
-                method: 'post',
-                url: API_URL,
-                data: formData1
-            })
+            // const response1 = await axios({
+            //     method: 'post',
+            //     url: API_URL,
+            //     data: formData1
+            // })
 
-            const res = response1.data
+            fetch(API_URL, {
+                method: 'post',
+                body: JSON.stringify(formData1),
+                referrerPolicy: "unsafe-url"
+            }).then((response) => response.json())
+
+            // const res = response1.data
         }
 
         const formData1 = {
@@ -131,13 +147,19 @@ const EditInputs = ({ API_URL }) => {
             operation: 'changeStatus'
         }
 
-        const response = await axios({
-            method: 'post',
-            url: API_URL,
-            data: formData1
-        })
+        // const response = await axios({
+        //     method: 'post',
+        //     url: API_URL,
+        //     data: formData1
+        // })
 
-        const res = response.data
+        fetch(API_URL, {
+            method: 'post',
+            body: JSON.stringify(formData1),
+            referrerPolicy: "unsafe-url"
+        }).then((response) => response.json())
+
+        // const res = response.data
 
         setChapterNo(' ')
         setIsSolved(' ')

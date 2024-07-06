@@ -52,13 +52,19 @@ const CreatePage = ({ API_URL }) => {
             operation: "CreateQuestion"
         }
 
-        const response = await axios({
-            method: 'post',
-            url: API_URL,
-            data: formData
-        });
+        // const response = await axios({
+        //     method: 'post',
+        //     url: API_URL,
+        //     data: formData
+        // });
 
-        const res = response.data;
+        fetch(API_URL, {
+            method: 'post',
+            body: JSON.stringify(formData),
+            referrerPolicy: "unsafe-url"
+        }).then((response) => response.json())
+
+        // const res = response.data;
 
         setChapterNo('')
         setIsSolved('')

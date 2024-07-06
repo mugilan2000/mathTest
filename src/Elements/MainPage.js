@@ -17,33 +17,33 @@ const MainPage = ({ API_URL }) => {
 
     let sstatus = 1;
 
+    // const fetchData = async () => {
+
+    //     const formData = {
+
+    //         operation: 'getAllQuestions'
+    //     }
+
+    //     const response = await axios({
+    //         method: 'post',
+    //         url: API_URL,
+
+    //         data: JSON.stringify(formData)
+    //     });
+
+    //     const res = response.data;
+
+    //     if (res[0].result === "No Data Found") {
+    //         setError(res[0].result);
+    //     }
+    //     else {
+    //         setData(res)
+    //         console.log(res)
+
+    //     }
+    // }
+
     const fetchData = async () => {
-
-        const formData = {
-
-            operation: 'getAllQuestions'
-        }
-
-        const response = await axios({
-            method: 'post',
-            url: API_URL,
-            
-            data: JSON.stringify(formData)
-        });
-
-        const res = response.data;
-
-        if (res[0].result === "No Data Found") {
-            setError(res[0].result);
-        }
-        else {
-            setData(res)
-            console.log(res)
-
-        }
-    }
-
-    useEffect(() => {
         const formData = {
 
             operation: 'getAllQuestions'
@@ -53,7 +53,11 @@ const MainPage = ({ API_URL }) => {
             body: JSON.stringify(formData),
             referrerPolicy: "unsafe-url"
         }).then((response) => response.json())
-        .then((data) => setData(data))
+            .then((data) => setData(data))
+    }
+
+    useEffect(() => {
+        fetchData();
     }, [])
 
     // useEffect(() => {
@@ -94,13 +98,19 @@ const MainPage = ({ API_URL }) => {
                 question_no: q_num
             }
 
-            const response = await axios({
-                method: 'post',
-                url: API_URL,
-                data: formData1
-            })
+            // const response = await axios({
+            //     method: 'post',
+            //     url: API_URL,
+            //     data: formData1
+            // })
 
-            const res = response.data;
+            fetch(API_URL, {
+                method: 'post',
+                body: JSON.stringify(formData1),
+                referrerPolicy: "unsafe-url"
+            }).then((response) => response.json())
+
+            // const res = response.data;
 
         }
 
@@ -112,13 +122,19 @@ const MainPage = ({ API_URL }) => {
             question_no: q_num
         }
 
-        const response = await axios({
-            method: 'post',
-            url: API_URL,
-            data: formData
-        })
+        // const response = await axios({
+        //     method: 'post',
+        //     url: API_URL,
+        //     data: formData
+        // })
 
-        const res = response.data;
+        fetch(API_URL, {
+            method: 'post',
+            body: JSON.stringify(formData),
+            referrerPolicy: "unsafe-url"
+        }).then((response) => response.json())
+
+        // const res = response.data;
 
         fetchData();
 
