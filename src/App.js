@@ -7,7 +7,7 @@ import EditInputs from './Elements/EditInputs';
 
 function App() {
 
-  const API_URL = "http://daily-test.000webhostapp.com/API.php";
+  const API_URL = "http://localhost/Exam_backend/API.php";
 
   //http://daily-test.000webhostapp.com/API.php
 

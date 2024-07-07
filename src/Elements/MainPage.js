@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Css/MainPage.css'
 import { Footer } from './Footer'
+import Pagination from '../Components/Pagination'
 
 const MainPage = ({ API_URL }) => {
 
@@ -15,6 +16,14 @@ const MainPage = ({ API_URL }) => {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const recordsPerPage = 5;
+    
+    const lastIndex = currentPage * recordsPerPage;
+    const firstIndex = lastIndex - recordsPerPage;
+    const records = data.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(data.length / recordsPerPage);
 
     let sstatus = 1;
 
@@ -151,7 +160,7 @@ const MainPage = ({ API_URL }) => {
             <div>
                 <h5 className='heading1'>10th Maths Test</h5>
                 <h4 className='heading2'>Hi Haritha, Solve below maths questions on daily basis</h4>
-                {data.map((dt) => (
+                {records.map((dt) => (
                     <div>
                         <br></br>
                         <div className='card' key={dt.question_no}>
@@ -176,6 +185,17 @@ const MainPage = ({ API_URL }) => {
                         </div>
                     </div>
                 ))}
+
+                <Pagination 
+                currentPage = {currentPage}
+                setCurrentPage = {setCurrentPage}
+                recordsPerPage = {recordsPerPage}
+                npage = {npage}
+                
+                firstIndex={firstIndex}
+                lastIndex={lastIndex}
+                
+                />
 
                 <Footer />
 
